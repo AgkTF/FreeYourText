@@ -1,3 +1,5 @@
 # Project Diary
 
-1-
+## Preparing the project for tailwind
+
+## General Psst.
