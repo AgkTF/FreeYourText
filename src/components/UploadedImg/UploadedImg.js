@@ -1,9 +1,10 @@
 import React from "react";
-// import Img from "../../assets/tesseract-test.png";
 
 const UploadedImg = ({ image }) => {
-  return (
-    <div className="mt-12 w-4/5 rounded-lg overflow-hidden bg-indigo-100">
+  let toRender;
+
+  if (image) {
+    toRender = (
       <div className="relative pb-4/5">
         <img
           src={image}
@@ -11,6 +12,20 @@ const UploadedImg = ({ image }) => {
           className="absolute h-full w-full object-contain rounded-lg"
         />
       </div>
+    );
+  } else {
+    toRender = (
+      <div className="relative pt-5 pb-4/5 text-center">
+        <p className="text-sm text-indigo-500">
+          Your uploaded image will appear here.
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-12 w-4/5 rounded-lg overflow-hidden bg-indigo-100">
+      {toRender}
     </div>
   );
 };
