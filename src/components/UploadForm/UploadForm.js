@@ -1,30 +1,52 @@
 import React, { useRef, useState } from "react";
+import { createWorker } from "tesseract.js";
 import ResultBox from "../ResultBox/ResultBox";
 
 const UploadForm = () => {
-  const uploadField = useRef();
+  const fileInputRef = useRef();
 
   const [langSelected, setLangSelected] = useState("");
-  // const []
+  const [uploadedFile, setUploadedFile] = useState();
+  const [textResult, setTextResult] = useState(
+    "Your free text will be here, hopefully."
+  );
 
   const langChangeHandler = (event) => {
     setLangSelected(event.target.value);
   };
 
-  const formSubmitHandler = (event) => {
+  const inputFieldChangeHandler = () => {
+    setUploadedFile(fileInputRef.current.files[0]);
+  };
+
+  const worker = createWorker({
+    logger: (m) => console.log(m),
+  });
+
+  const startTesseract = async (event) => {
     event.preventDefault();
-    console.log(uploadField);
-    alert(`Selected file - ${uploadField.current.files[0].name}`);
+
+    await worker.load();
+    await worker.loadLanguage(langSelected);
+    await worker.initialize(langSelected);
+    const {
+      data: { text },
+    } = await worker.recognize(uploadedFile);
+
+    console.log(text);
+    setTextResult(text);
   };
 
   return (
-    <div className="pt-48 w-1/2 m-auto">
-      <form onSubmit={formSubmitHandler} className="flex flex-col items-center">
+    <div className="py-48 w-1/2 m-auto">
+      <form onSubmit={startTesseract} className="flex flex-col items-center">
         <div className="flex justify-between w-full">
           <input
             type="file"
-            name="uploadField"
-            ref={uploadField}
+            name="fileInputRef"
+            ref={fileInputRef}
+            onChange={inputFieldChangeHandler}
+            accept=".jpg,.svg,.jpeg,.png,.webp"
             className=""
           />
           <select
@@ -47,7 +69,7 @@ const UploadForm = () => {
         </button>
       </form>
 
-      <ResultBox textResult="Your free text will be here, hopefully." />
+      <ResultBox textResult={textResult} />
     </div>
   );
 };
