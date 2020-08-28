@@ -82,7 +82,7 @@ const UploadForm = () => {
   }
 
   return (
-    <div className="mt-16 mx-auto flex flex-col items-center">
+    <div className="mt-12 mx-auto flex flex-col items-center">
       <form
         onSubmit={startTesseract}
         className="flex flex-col items-center w-full"
@@ -105,14 +105,16 @@ const UploadForm = () => {
               className="px-2 py-1 font-semibold rounded text-green-600 border-2 border-green-500 cursor-pointer text-center flex items-center justify-center"
             >
               <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="upload w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="check-circle w-5 h-5"
               >
                 <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
               <span>Uploaded Successfully</span>
@@ -123,15 +125,17 @@ const UploadForm = () => {
               className="px-2 py-1 rounded text-indigo-600 border-2 border-indigo-500 hover:bg-indigo-100 cursor-pointer text-center flex items-center justify-center"
             >
               <svg
-                viewBox="0 0 20 20"
-                fill="currentColor"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
                 className="upload w-5 h-5"
               >
                 <path
-                  fillRule="evenodd"
-                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
-                  clipRule="evenodd"
-                ></path>
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                />
               </svg>
               <span>Upload image</span>
             </label>
@@ -140,7 +144,7 @@ const UploadForm = () => {
           <select
             value={langSelected}
             onChange={langChangeHandler}
-            className="mt-4 px-2 py-1 rounded box-border font-normal text-indigo-600 border-2  border-indigo-500 bg-white
+            className="mt-4 px-2 py-1 rounded box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-white
             "
           >
             <option value="" disabled>
@@ -154,18 +158,20 @@ const UploadForm = () => {
         {!langSelected || !uploadedFile ? (
           <button
             type="submit"
-            className="mt-8 px-2 py-2 w-1/2 font-semibold text-lg text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs cursor-not-allowed opacity-50 flex justify-center items-center"
+            className="mt-8 px-2 py-2 w-1/2 font-semibold text-base text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs cursor-not-allowed opacity-50 flex justify-center items-center"
           >
             Select from above{" "}
             <svg
-              viewBox="0 0 20 20"
-              fill="currentColor"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
               className="ml-1 arrow-circle-up w-6 h-6"
             >
               <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
-                clipRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z"
               />
             </svg>
             <ProgressBar progress={progress} />
