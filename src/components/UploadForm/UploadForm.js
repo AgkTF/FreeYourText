@@ -150,13 +150,35 @@ const UploadForm = () => {
             <option value="eng">English</option>
           </select>
         </div>
-        <button
-          type="submit"
-          className="mt-8 px-2 py-2 w-1/2 font-semibold text-lg text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs"
-        >
-          {btnContent}
-          <ProgressBar progress={progress} />
-        </button>
+
+        {!langSelected || !uploadedFile ? (
+          <button
+            type="submit"
+            className="mt-8 px-2 py-2 w-1/2 font-semibold text-lg text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs cursor-not-allowed opacity-50 flex justify-center items-center"
+          >
+            Select from above{" "}
+            <svg
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="ml-1 arrow-circle-up w-6 h-6"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <ProgressBar progress={progress} />
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="mt-8 px-2 py-2 w-1/2 font-semibold text-lg text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs"
+          >
+            {btnContent}
+            <ProgressBar progress={progress} />
+          </button>
+        )}
       </form>
 
       <UploadedImg
