@@ -24,7 +24,7 @@ const UploadedImg = ({ image }) => {
   }
 
   return (
-    <div className="mt-12 w-4/5 rounded-lg overflow-hidden bg-indigo-100">
+    <div className="mt-12 max-w-xs w-4/5 rounded-lg overflow-hidden bg-indigo-100">
       {toRender}
     </div>
   );

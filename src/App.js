@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-white min-h-screen">
       <Navbar />
       <div>
         <h1 className="mt-8 text-indigo-800 font-medium text-xl text-center">
