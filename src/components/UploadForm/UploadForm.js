@@ -32,6 +32,10 @@ const UploadForm = () => {
 
   const startTesseract = async (event) => {
     event.preventDefault();
+    // Just to make sure the users can tinker with it.
+    if (!langSelected || !uploadedFile) {
+      return console.log("💩");
+    }
 
     await worker.load();
     await worker.loadLanguage(langSelected);
@@ -82,7 +86,7 @@ const UploadForm = () => {
   }
 
   return (
-    <div className="mt-12 mx-auto flex flex-col items-center justify-center">
+    <div className=" relative mt-12 mx-auto flex flex-col items-center justify-center">
       <form
         onSubmit={startTesseract}
         className="flex flex-col items-center w-full"
@@ -158,7 +162,8 @@ const UploadForm = () => {
         {!langSelected || !uploadedFile ? (
           <button
             type="submit"
-            className="mt-8 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-base cursor-not-allowed opacity-50 flex justify-center items-center sm:mt-5"
+            className="mt-8 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-base cursor-not-allowed opacity-50 flex justify-center items-center sm:mt-5 focus:outline-none"
+            disabled={!langSelected || !uploadedFile}
           >
             Select from above{" "}
             <svg
@@ -179,7 +184,7 @@ const UploadForm = () => {
         ) : (
           <button
             type="submit"
-            className="mt-8 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-lg sm:mt-5"
+            className="mt-8 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-lg sm:mt-5 focus:outline-none"
           >
             {btnContent}
             <ProgressBar progress={progress} />
@@ -187,7 +192,7 @@ const UploadForm = () => {
         )}
       </form>
 
-      <div className="mt-12 w-1/2 max-w-md md:w-2/5">
+      <div className="mt-12 w-1/2 sm:w-5/12 max-w-sm">
         <UploadedImg
           image={uploadedFile ? URL.createObjectURL(uploadedFile) : ""}
         />
