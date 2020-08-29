@@ -187,7 +187,7 @@ const UploadForm = () => {
         )}
       </form>
 
-      <div className="mt-12 sm:flex sm:w-3/4 justify-center">
+      <div className="mt-12 w-1/2 max-w-md md:w-2/5">
         <UploadedImg
           image={uploadedFile ? URL.createObjectURL(uploadedFile) : ""}
         />

@@ -5,7 +5,7 @@ const UploadedImg = ({ image }) => {
 
   if (image) {
     toRender = (
-      <div className="relative pb-4/5">
+      <div className="relative pb-2/3">
         <img
           src={image}
           alt="uploaded"
@@ -24,7 +24,7 @@ const UploadedImg = ({ image }) => {
   }
 
   return (
-    <div className="rounded-lg overflow-hidden sm:w-1/2 border-indigo-400 border-2">
+    <div className="rounded-lg overflow-hidden bg-gray-100 border-indigo-400 border-2">
       {toRender}
     </div>
   );
