@@ -24,7 +24,7 @@ const UploadedImg = ({ image }) => {
   }
 
   return (
-    <div className="rounded-lg overflow-hidden bg-indigo-100 sm:w-1/2 border-indigo-500 border-2">
+    <div className="rounded-lg overflow-hidden sm:w-1/2 border-indigo-400 border-2">
       {toRender}
     </div>
   );
