@@ -5,14 +5,14 @@ const ResultBox = ({ textResult }) => {
       className="mt-6 h-auto text-left rounded-lg px-3 py-2 overflow-y-scroll border-indigo-400 border-2 md:w-full"
       style={{ maxHeight: "22rem" }}
     >
-      {/* {textResult ? (
-        <p className="text-base text-indigo-600">{textResult}</p>
+      {textResult ? (
+        <p className="text-sm text-indigo-600">{textResult}</p>
       ) : (
         <p className="py-5 text-sm text-indigo-500 text-center">
           Your text will appear here, hopefully.
         </p>
-      )} */}
-      <p className="text-base text-indigo-600">
+      )}
+      {/* <p className="text-sm text-indigo-600">
         It's "scripts" field of package.json. For example: We can run a script
         with npm run command. On the other hand, this run-p command runs
         multiple scripts in parallel. The following 2 commands are similar. The
@@ -33,7 +33,7 @@ const ResultBox = ({ textResult }) => {
         behavior will be disabled. Note2: & operator does not work on Windows'
         cmd.exe. But run-p works fine there. Glob-like pattern matching for
         script names
-      </p>
+      </p> */}
     </div>
   );
 };

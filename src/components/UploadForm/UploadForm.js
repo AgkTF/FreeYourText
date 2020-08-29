@@ -148,8 +148,14 @@ const UploadForm = () => {
           <select
             value={langSelected}
             onChange={langChangeHandler}
-            className="mt-4 px-2 py-1 rounded box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-white sm:mt-0 sm:ml-5
-            "
+            className="mt-4 pl-2 pr-6 py-1 rounded box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-white sm:mt-0 sm:ml-5
+             appearance-none"
+            style={{
+              backgroundImage: "url(down-arrow.svg)",
+              backgroundPosition: "97% 0.6em",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "1em",
+            }}
           >
             <option value="" disabled>
               Select a language
