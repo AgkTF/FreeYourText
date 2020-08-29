@@ -9,14 +9,14 @@ const UploadedImg = ({ image }) => {
         <img
           src={image}
           alt="uploaded"
-          className="absolute h-full w-full object-contain rounded-lg"
+          className="absolute h-full w-full object-contain rounded-lg "
         />
       </div>
     );
   } else {
     toRender = (
       <div className="relative pt-5 pb-4/5 text-center">
-        <p className="text-sm text-indigo-500">
+        <p className="pt-1 text-sm text-indigo-500 text-center">
           Your uploaded image will appear here.
         </p>
       </div>
@@ -24,7 +24,7 @@ const UploadedImg = ({ image }) => {
   }
 
   return (
-    <div className="mt-12 max-w-xs w-4/5 rounded-lg overflow-hidden bg-indigo-100">
+    <div className="rounded-lg overflow-hidden bg-indigo-100 sm:w-1/2 border-indigo-500 border-2">
       {toRender}
     </div>
   );

@@ -15,12 +15,13 @@
     "tesseract.js": "^2.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start:React": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch:tailwind": "postcss css/tailwind.css -o src/tailwind.output.css --watch",
-    "build:tailwind": "postcss css/tailwind.css -o src/tailwind.output.css"
+    "build:tailwind": "postcss css/tailwind.css -o src/tailwind.output.css",
+    "start:app": "run-p -n watch:tailwind start:React"
   },
   "eslintConfig": {
     "extends": "react-app"

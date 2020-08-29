@@ -82,12 +82,12 @@ const UploadForm = () => {
   }
 
   return (
-    <div className="mt-12 mx-auto flex flex-col items-center">
+    <div className="mt-12 mx-auto flex flex-col items-center justify-center">
       <form
         onSubmit={startTesseract}
         className="flex flex-col items-center w-full"
       >
-        <div className="flex flex-col justify-between">
+        <div className="flex flex-col justify-between items-center sm:flex-row">
           <input
             type="file"
             name="fileInputRef"
@@ -144,7 +144,7 @@ const UploadForm = () => {
           <select
             value={langSelected}
             onChange={langChangeHandler}
-            className="mt-4 px-2 py-1 rounded box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-white
+            className="mt-4 px-2 py-1 rounded box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-white sm:mt-0 sm:ml-5
             "
           >
             <option value="" disabled>
@@ -158,7 +158,7 @@ const UploadForm = () => {
         {!langSelected || !uploadedFile ? (
           <button
             type="submit"
-            className="mt-8 px-2 py-2 w-1/2 font-semibold text-base text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs cursor-not-allowed opacity-50 flex justify-center items-center"
+            className="mt-8 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-base cursor-not-allowed opacity-50 flex justify-center items-center sm:mt-5"
           >
             Select from above{" "}
             <svg
@@ -179,7 +179,7 @@ const UploadForm = () => {
         ) : (
           <button
             type="submit"
-            className="mt-8 px-2 py-2 w-1/2 font-semibold text-lg text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs"
+            className="mt-8 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-lg sm:mt-5"
           >
             {btnContent}
             <ProgressBar progress={progress} />
@@ -187,10 +187,12 @@ const UploadForm = () => {
         )}
       </form>
 
-      <UploadedImg
-        image={uploadedFile ? URL.createObjectURL(uploadedFile) : ""}
-      />
-      <ResultBox textResult={textResult} />
+      <div className="mt-12 sm:flex sm:w-3/4 justify-center">
+        <UploadedImg
+          image={uploadedFile ? URL.createObjectURL(uploadedFile) : ""}
+        />
+        <ResultBox textResult={textResult} />
+      </div>
     </div>
   );
 };
