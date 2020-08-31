@@ -16,7 +16,6 @@ function App() {
       }
     >
       <Navbar />
-      <button onClick={themeContext.toggler}>{themeContext.theme}</button>
       <main style={{ minHeight: `calc(100vh - 10rem)` }}>
         <div>
           <h1 className="mt-12 text-indigo-600 font-bold text-2xl text-center">
