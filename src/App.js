@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import "./tailwind.output.css";
 import UploadForm from "./components/UploadForm/UploadForm";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/footer";
+import { ThemeContext } from "./context/theme-context";
 
 function App() {
+  const themeContext = useContext(ThemeContext);
+
   return (
-    <div className="bg-white min-h-screen">
+    <div
+      className={
+        "min-h-screen transition duration-500 ease-in-out " +
+        (themeContext.theme === "light" ? "" : "bg-gray-900")
+      }
+    >
       <Navbar />
+      <button onClick={themeContext.toggler}>{themeContext.theme}</button>
       <main style={{ minHeight: `calc(100vh - 10rem)` }}>
         <div>
-          <h1 className="mt-6 text-indigo-800 font-medium text-2xl text-center">
+          <h1 className="mt-12 text-indigo-600 font-bold text-2xl text-center">
             Ready to <em>free</em> your text?
             <br />
             Let's GO! 🚀

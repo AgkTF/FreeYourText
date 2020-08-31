@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./tailwind.output.css";
 import App from "./App";
+import ThemeContextProvider from "./context/theme-context";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ThemeContextProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ThemeContextProvider>,
   document.getElementById("root")
 );

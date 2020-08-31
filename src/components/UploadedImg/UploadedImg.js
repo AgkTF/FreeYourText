@@ -16,7 +16,7 @@ const UploadedImg = ({ image }) => {
   } else {
     toRender = (
       <div className="relative pt-5 pb-4/5 text-center">
-        <p className="pt-1 text-sm text-indigo-500 text-center">
+        <p className="pt-1 px-2 text-sm text-indigo-500 text-center">
           Your uploaded image will appear here.
         </p>
       </div>
@@ -24,7 +24,7 @@ const UploadedImg = ({ image }) => {
   }
 
   return (
-    <div className="rounded-lg overflow-hidden bg-gray-100 border-indigo-400 border-2">
+    <div className="rounded-lg overflow-hidden bg-transparent border-indigo-400 border-2">
       {toRender}
     </div>
   );
