@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const UploadedImg = ({ image }) => {
   let toRender;
@@ -28,6 +29,10 @@ const UploadedImg = ({ image }) => {
       {toRender}
     </div>
   );
+};
+
+UploadedImg.propTypes = {
+  image: PropTypes.string,
 };
 
 export default UploadedImg;

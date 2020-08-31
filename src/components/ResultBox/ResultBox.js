@@ -1,41 +1,55 @@
-import React from "react";
+import React, { useRef, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
+import { ThemeContext } from "../../context/theme-context";
+
 const ResultBox = ({ textResult }) => {
+  const themeContext = useContext(ThemeContext);
+  const textareaRef = useRef();
+  const copy = () => {
+    textareaRef.current.select();
+    document.execCommand("copy");
+  };
+
+  useEffect(() => {
+    console.log(textResult === "");
+  }, [textResult]);
+
   return (
-    <div
-      className="mt-6 h-auto text-left rounded-lg px-3 py-2 overflow-y-scroll border-indigo-400 border-2 md:w-full"
-      style={{ maxHeight: "22rem" }}
-    >
-      {textResult ? (
-        <p className="text-sm text-indigo-600">{textResult}</p>
-      ) : (
-        <p className="py-5 text-sm text-indigo-500 text-center">
-          Your text will appear here, hopefully.
-        </p>
-      )}
-      {/* <p className="text-sm text-indigo-600">
-        It's "scripts" field of package.json. For example: We can run a script
-        with npm run command. On the other hand, this run-p command runs
-        multiple scripts in parallel. The following 2 commands are similar. The
-        run-p command is shorter and available on Windows. $ run-p lint build $
-        npm run lint & npm run build Note1: If a script exited with a non-zero
-        code, the other scripts and those descendant processes are killed with
-        SIGTERM (On Windows, with taskkill.exe /F /T). If --continue-on-error
-        option is given, this behavior will be disabled. Note2: & operator does
-        not work on Windows' cmd.exe. But run-p works fine there. Glob-like
-        pattern matching for script names It's "scripts" field of package.json.
-        For example: We can run a script with npm run command. On the other
-        hand, this run-p command runs multiple scripts in parallel. The
-        following 2 commands are similar. The run-p command is shorter and
-        available on Windows. $ run-p lint build $ npm run lint & npm run build
-        Note1: If a script exited with a non-zero code, the other scripts and
-        those descendant processes are killed with SIGTERM (On Windows, with
-        taskkill.exe /F /T). If --continue-on-error option is given, this
-        behavior will be disabled. Note2: & operator does not work on Windows'
-        cmd.exe. But run-p works fine there. Glob-like pattern matching for
-        script names
-      </p> */}
+    <div>
+      <textarea
+        className={
+          "mt-4 py-1 px-2 w-full h-48 text-sm text-indigo-500 border-2 border-indigo-400 rounded-lg focus:outline-none focus:shadow-outline " +
+          (themeContext.theme === "dark" ? "bg-gray-900" : "")
+        }
+        placeholder="Your text will appear here, hopefully."
+        value={textResult}
+        readOnly
+        ref={textareaRef}
+      />
+
+      <button onClick={copy}>
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          className="clipboard-copy w-6 h-6 text-indigo-600 hover:text-indigo-400
+           ml-2"
+          style={!textResult && { display: "none" }}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"
+          />
+        </svg>
+      </button>
     </div>
   );
+};
+
+ResultBox.propTypes = {
+  textResult: PropTypes.string,
 };
 
 export default ResultBox;

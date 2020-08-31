@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ProgressBar = ({ progress }) => {
   const containerStyles = {
@@ -28,6 +29,10 @@ const ProgressBar = ({ progress }) => {
       </div>
     </div>
   );
+};
+
+ProgressBar.propTypes = {
+  progress: PropTypes.number,
 };
 
 export default ProgressBar;

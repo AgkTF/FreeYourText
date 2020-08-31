@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 const ThemeToggler = ({ toggler, theme }) => {
   return (
     <button
@@ -34,6 +36,11 @@ const ThemeToggler = ({ toggler, theme }) => {
       </span>
     </button>
   );
+};
+
+ThemeToggler.propTypes = {
+  theme: PropTypes.string,
+  toggler: PropTypes.func,
 };
 
 export default ThemeToggler;

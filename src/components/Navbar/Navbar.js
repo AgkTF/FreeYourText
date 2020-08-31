@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="px-4 sm:px-0 flex items-center justify-between max-w-sm md:max-w-md mx-auto">
         <a
           href="#"
-          className="font-semibold text-white text-lg hover:text-indigo-100"
+          className="font-semibold text-white text-xl hover:text-indigo-100"
         >
           FreeYourText
         </a>
