@@ -11,6 +11,7 @@ const UploadForm = () => {
   const [uploadedFile, setUploadedFile] = useState();
   const [textResult, setTextResult] = useState("");
   const [progress, setProgress] = useState(0);
+  const [status, setStatus] = useState("");
 
   const langChangeHandler = (event) => {
     setLangSelected(event.target.value);
@@ -24,7 +25,9 @@ const UploadForm = () => {
   const worker = createWorker({
     logger: (m) => {
       console.log(m);
-      if (m.status === "recognizing text") {
+      if (m.status && m.status !== "recognizing text") {
+        setStatus("preparing");
+      } else if (m.status && m.status === "recognizing text") {
         setProgress(m.progress);
       }
     },
@@ -49,13 +52,32 @@ const UploadForm = () => {
   };
 
   let btnContent = "GO!";
-  if (progress > 0 && progress < 1) {
+  if (progress === 0 && status !== "") {
+    btnContent = (
+      <div className="flex justify-center items-center">
+        <svg
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          className="refresh w-5 h-5 animate-spin duration-500"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+          />
+        </svg>
+        <span className="ml-1 tracking-wide">{status}</span>
+      </div>
+    );
+  } else if (progress > 0 && progress < 1) {
     btnContent = (
       <div className="flex justify-center">
         <svg
           viewBox="0 0 20 20"
           fill="currentColor"
-          className="cog w-6 h-6 animate-spin"
+          className="cog w-6 h-6 animate-spin duration-700"
         >
           <path
             fillRule="evenodd"
@@ -106,7 +128,7 @@ const UploadForm = () => {
           {uploadedFile ? (
             <label
               htmlFor="file"
-              className="px-2 py-1 font-semibold rounded text-green-600 border-2 border-green-500 cursor-pointer text-center flex items-center justify-center"
+              className="px-2 py-1 font-semibold rounded-lg text-green-600 border-2 border-green-500 cursor-pointer text-center flex items-center justify-center"
             >
               <svg
                 fill="none"
@@ -126,7 +148,7 @@ const UploadForm = () => {
           ) : (
             <label
               htmlFor="file"
-              className="px-2 py-1 rounded text-indigo-600 border-2 border-indigo-500 hover:bg-indigo-100 cursor-pointer text-center flex items-center justify-center"
+              className="px-2 py-1 rounded-lg text-indigo-600 border-2 border-indigo-500 hover:bg-indigo-100 cursor-pointer text-center flex items-center justify-center"
             >
               <svg
                 fill="none"
@@ -148,8 +170,8 @@ const UploadForm = () => {
           <select
             value={langSelected}
             onChange={langChangeHandler}
-            className="mt-4 pl-2 pr-6 py-1 rounded box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-transparent sm:mt-0 sm:ml-5
-             appearance-none focus:outline-none focus:shadow-outline"
+            className="mt-4 pl-2 pr-6 py-1 rounded-lg box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-transparent sm:mt-0 sm:ml-5
+             appearance-none focus:outline-none focus:shadow-outline hover:bg-gray-200"
             style={{
               backgroundImage: "url(down-arrow.svg)",
               backgroundPosition: "97% 0.6em",
