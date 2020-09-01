@@ -8,8 +8,8 @@ const Navbar = () => {
     <div className="py-1 h-auto bg-indigo-500">
       <div className="px-4 sm:px-0 flex items-center justify-between max-w-sm md:max-w-md mx-auto">
         <a
-          href="#"
-          className="font-semibold text-white text-xl hover:text-indigo-100"
+          href="/"
+          className="font-bold tracking-wider text-white text-xl sm:text-2xl hover:text-indigo-100"
         >
           FreeYourText
         </a>

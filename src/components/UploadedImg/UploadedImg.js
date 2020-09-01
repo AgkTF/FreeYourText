@@ -17,7 +17,7 @@ const UploadedImg = ({ image }) => {
   } else {
     toRender = (
       <div className="relative pt-5 pb-4/5 text-center">
-        <p className="pt-1 px-2 text-sm text-indigo-500 text-center">
+        <p className="pt-1 px-2 text-sm text-indigo-300 text-center">
           Your uploaded image will appear here.
         </p>
       </div>

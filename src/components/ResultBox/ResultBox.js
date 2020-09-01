@@ -1,25 +1,32 @@
-import React, { useRef, useContext, useEffect } from "react";
+import React, { useRef, useContext, useState, useEffect } from "react";
+import SuccessCard from "../Card/Card";
 import PropTypes from "prop-types";
 import { ThemeContext } from "../../context/theme-context";
 
 const ResultBox = ({ textResult }) => {
+  const [successCopy, setSuccessCopy] = useState(false);
   const themeContext = useContext(ThemeContext);
   const textareaRef = useRef();
   const copy = () => {
     textareaRef.current.select();
     document.execCommand("copy");
+    setSuccessCopy(true);
   };
 
   useEffect(() => {
-    console.log(textResult === "");
-  }, [textResult]);
+    setTimeout(() => {
+      if (successCopy) {
+        setSuccessCopy(false);
+      }
+    }, 1000);
+  }, [successCopy]);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <textarea
         className={
-          "mt-4 py-1 px-2 w-full h-48 text-sm text-indigo-500 border-2 border-indigo-400 rounded-lg focus:outline-none focus:shadow-outline " +
-          (themeContext.theme === "dark" ? "bg-gray-900" : "")
+          "mt-4 py-1 px-2 w-full h-48 text-sm text-indigo-500 border-2 border-indigo-400 rounded-lg focus:outline-none focus:shadow-outline transition duration-500 ease-in-out " +
+          (themeContext.theme === "dark" ? "bg-transparent" : "")
         }
         placeholder="Your text will appear here, hopefully."
         value={textResult}
@@ -34,7 +41,7 @@ const ResultBox = ({ textResult }) => {
           stroke="currentColor"
           className="clipboard-copy w-6 h-6 text-indigo-600 hover:text-indigo-400
            ml-2"
-          style={!textResult && { display: "none" }}
+          style={!textResult ? { display: "none" } : { display: "block" }}
         >
           <path
             strokeLinecap="round"
@@ -44,6 +51,7 @@ const ResultBox = ({ textResult }) => {
           />
         </svg>
       </button>
+      <SuccessCard show={successCopy} />
     </div>
   );
 };

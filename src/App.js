@@ -11,14 +11,14 @@ function App() {
   return (
     <div
       className={
-        "min-h-screen transition duration-500 ease-in-out " +
+        "font-bai min-h-screen transition duration-500 ease-in-out " +
         (themeContext.theme === "light" ? "" : "bg-gray-900")
       }
     >
       <Navbar />
       <main style={{ minHeight: `calc(100vh - 10rem)` }}>
         <div>
-          <h1 className="mt-12 text-indigo-600 font-bold text-2xl text-center">
+          <h1 className="mt-12 text-indigo-600 font-bold text-3xl text-center">
             Ready to <em>free</em> your text?
             <br />
             Let's GO! 🚀

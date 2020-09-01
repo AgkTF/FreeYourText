@@ -170,7 +170,7 @@ const UploadForm = () => {
           <select
             value={langSelected}
             onChange={langChangeHandler}
-            className="mt-4 pl-2 pr-6 py-1 rounded-lg box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-transparent sm:mt-0 sm:ml-5
+            className="mt-3 pl-2 pr-6 py-1 rounded-lg box-border font-normal text-indigo-600 border-2 border-indigo-500 bg-transparent sm:mt-0 sm:ml-5
              appearance-none focus:outline-none focus:shadow-outline hover:bg-gray-200"
             style={{
               backgroundImage: "url(down-arrow.svg)",
@@ -190,15 +190,15 @@ const UploadForm = () => {
         {!langSelected || !uploadedFile ? (
           <button
             type="submit"
-            className="mt-8 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-base cursor-not-allowed opacity-50 flex justify-center items-center sm:mt-5 focus:outline-none tracking-wider"
+            className="mt-6 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-base cursor-not-allowed opacity-50 flex justify-center items-center sm:mt-5 focus:outline-none tracking-wider"
             disabled={!langSelected || !uploadedFile}
           >
-            Select from above{" "}
+            Select something{" "}
             <svg
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="ml-1 arrow-circle-up w-6 h-6"
+              className="ml-1 arrow-circle-up w-6 h-6 animate-bounce"
             >
               <path
                 strokeLinecap="round"
@@ -212,7 +212,7 @@ const UploadForm = () => {
         ) : (
           <button
             type="submit"
-            className="mt-8 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-lg sm:mt-5 focus:outline-none focus:shadow-outline"
+            className="mt-6 px-2 py-2 w-1/2 font-semibold text-white bg-indigo-700 hover:bg-indigo-800 rounded-lg shadow-xl hover:shadow-sm max-w-xs text-lg sm:mt-5 focus:outline-none focus:shadow-outline"
           >
             {btnContent}
             <ProgressBar progress={progress} />
