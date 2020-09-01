@@ -3,6 +3,7 @@ import { createWorker } from "tesseract.js";
 import ResultBox from "../ResultBox/ResultBox";
 import UploadedImg from "../UploadedImg/UploadedImg";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import Confetti from "react-dom-confetti";
 
 const UploadForm = () => {
   const fileInputRef = useRef();
@@ -106,6 +107,20 @@ const UploadForm = () => {
       </div>
     );
   }
+
+  const confettiConfig = {
+    angle: "90",
+    spread: "146",
+    startVelocity: "40",
+    elementCount: "50",
+    dragFriction: 0.12,
+    duration: "2230",
+    stagger: 3,
+    width: "10px",
+    height: "10px",
+    perspective: "921px",
+    colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
+  };
 
   return (
     <div className=" relative mt-12 mx-auto flex flex-col items-center justify-center">
@@ -218,6 +233,8 @@ const UploadForm = () => {
             <ProgressBar progress={progress} />
           </button>
         )}
+
+        <Confetti active={progress === 1} config={confettiConfig} />
       </form>
 
       <div className="mt-12 w-1/2 sm:w-5/12 max-w-sm">

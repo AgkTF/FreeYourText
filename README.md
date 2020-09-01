@@ -1,68 +1,67 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FreeYourText
 
-## Available Scripts
+A simple way to extract text from images.
 
-In the project directory, you can run:
+## Technologies used in this project
 
-### `npm start`
+- **React** is my go-to UI library.
+- I decided for this project to give [**tailwindcss**](https://tailwindcss.com) a try, and I gotta say that it's just an amazing addition to my css skill set.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How I added tailwind to my React workflow without ejecting
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+I thought it might me useful to mention briefly how I did it.
 
-### `npm test`
+1- Installing `postcss-cli` to be able to use postcss in package.json **script**. Otherwise, it would give you an error.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm i -D postcss-cli
+```
 
-### `npm run build`
+2- After installing and initializing tailwindcss using
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm i tailwindcss
+npx tailwindcss init
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+You create a basic css file `css/tailwind.css` which will be filled with all the css at build time by tailwind.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
 
-### `npm run eject`
+3- I added a couple of scripts in `package.json` to help me with the process of compiling the css and running react. I used `npm-run-all` for running these processes in one line.<br>Please refer to `package.json` file for all the scripts.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm i -D npm-run-all
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4- Before running any of the postcss-related script, you have to configure your `postcss.config.js` file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```js
+module.exports = {
+  plugins: [require("tailwindcss")],
+};
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This is the basic setup with tailwindcss only.
 
-## Learn More
+> Please refer to tailwindcss Docs for complete instructions on how to get started. <br>
+> The videos created by **Adam Wathan** -the creator of tailwind- are really amazing. Check them out.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5- After running the `build:tailwind` script, you'll get a css file -I named `tailwind.output.css`- that's the file you'll need to import in your components.<br>
+I decided to put it in the `App` component to be available for all the other child components.
+But where you import it is totally up to you.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Future plans
 
-### Code Splitting
+I'm planning on working on this project and add couple of functionalities to it that'll make it more appealing and useful.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Credits
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- You can find the icons at [Heroicons.dev](Heroicons.dev) and [simpleicons](https://simpleicons.org/).
+- Netlify for hosting, of course.
+- The amazing developer community.
+  ![thank you](https://media.giphy.com/media/3otPoOxyDTXjzpMbIY/giphy.gif)

@@ -21,7 +21,7 @@ function App() {
           <h1 className="mt-12 text-indigo-600 font-bold text-3xl text-center">
             Ready to <em>free</em> your text?
             <br />
-            Let's GO! 🚀
+            Let's Go! 🚀
           </h1>
         </div>
         <UploadForm />
