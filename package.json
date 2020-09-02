@@ -17,12 +17,13 @@
   },
   "scripts": {
     "start:React": "react-scripts start",
-    "build": "react-scripts build",
+    "build:React": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch:tailwind": "postcss css/tailwind.css -o src/tailwind.output.css --watch",
     "build:tailwind": "postcss css/tailwind.css -o src/tailwind.output.css",
-    "start:app": "run-p -n watch:tailwind start:React"
+    "start:app": "run-p -n watch:tailwind start:React",
+    "build": "run-s -n build:tailwind build:React"
   },
   "eslintConfig": {
     "extends": "react-app"
