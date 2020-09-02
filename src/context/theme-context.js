@@ -6,7 +6,7 @@ export const ThemeContext = React.createContext({
 });
 
 const ThemeContextProvider = (props) => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme"));
+  const [theme, setTheme] = useState("light");
 
   const themeToggler = () => {
     if (theme === "light") {
