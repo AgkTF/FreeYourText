@@ -1,4 +1,4 @@
-# FreeYourText
+# [FreeYourText](freeyourtext.netlify.app)
 
 A simple way to extract text from images.
 
